@@ -1,0 +1,32 @@
+<header>
+    <div class="container">
+        <h1>Magnum Bookstore</h1>
+    </div>
+    <h1>Cart:</h1>
+</header>
+<main class="container" style="max-width: 100% !important;">
+    <!-- Home Page -->
+    <section id="home">
+        <!-- Featured books or promotions -->
+    </section>
+
+<section id="book-listing">
+    <div class="book-grid">
+        <!-- <div class="book-card" style="position: relative; height: 420px;" *ngFor="let item of searchData | slice:prevVal:nextVal; index as i" > -->
+            <div class="book-card" style="position: relative; height: 300px; width: 700px;" *ngFor="let item of receivedData" >
+                <div>
+            <img src={{item.thumbnailUrl}} alt="Book Img">
+            <h3>{{item.title}}</h3>
+            <p>Author: {{item.authors[0]}}</p>
+            </div>
+            <div style="float: right; position: relative;"><p style="position: absolute; bottom: 100px; right: 0; width: 100px;" id="price">Price: $<span style="font-weight: 600;">{{item.price}}</span></p></div>
+        </div>
+<div>{{cost}}</div> 
+    </div>
+</section>
+
+
+</main>
+
+<footer>
+</footer>

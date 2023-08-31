@@ -1,0 +1,40 @@
+    <header>
+        <div class="container">
+            <h1>Magnum Bookstore</h1>
+        </div>
+    </header>
+    <main class="container" style="max-width: 100% !important;">
+        <!-- Home Page -->
+        <section id="home">
+            <h2>Welcome to Your Bookstore {{username}}</h2>
+            <a href="/cart">Link</a>
+            <!-- Featured books or promotions -->
+            <div class="book-list">
+                <!-- Book cards go here -->
+            </div>
+        </section>
+
+    <section id="book-listing">
+        <div class="book-grid">
+            <!-- <div class="book-card" style="position: relative; height: 420px;" *ngFor="let item of searchData | slice:prevVal:nextVal; index as i" > -->
+                <div class="book-card" style="position: relative; height: 420px;" *ngFor="let item of searchData | paginate: { itemsPerPage: count, currentPage: p }" >
+                <img src={{item.thumbnailUrl}} alt="Book Img">
+                <h3>{{item.title}}</h3>
+                <p>Author: {{item.authors[0]}}</p>
+                <div><p style="position: absolute; bottom: 45px; left: 0; right: 0;" id="price">Price: $<span style="font-weight: 600;">{{item.price}}</span></p></div>
+                <div style="left: 0; right: 0;position: absolute; bottom: 10px;" (click)="updateCartList(item)"><button mat-raised-button>Add to Cart</button></div>
+            </div>
+    
+        </div>
+    </section>
+
+
+    </main>
+
+    <footer>
+        <div class="container" style="position: relative;">
+            <p style="display: inline-block; margin-top: 20px;">&copy; 2023 Magnum Bookstore</p>
+            <div style="position: relative; bottom: 30px; right: -350px;"><pagination-controls style="display: block; float: right;" (pageChange)="p = $event"></pagination-controls></div>
+            
+        </div>
+    </footer>

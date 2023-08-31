@@ -1,0 +1,87 @@
+<div class="center-content">
+    <mat-card class="example-card">
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Login">
+            <div style="overflow: hidden;">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput value="" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <div><span id="loginspan"></span></div>
+            
+            <button mat-button color="primary" (click)="getUserInfo()">Login</button>
+            <div>
+            <span>New User? Register!</span>
+            </div>
+        </div>
+          </mat-tab>
+
+          <mat-tab label="Register">
+            <div style="overflow: hidden;">
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Full Name:</mat-label>
+                <input type="text" matInput value="" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput value="" [(ngModel)]="remail" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput [(ngModel)]="rpassword" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Re-Type Password</mat-label>
+              <input type="password" matInput [(ngModel)]="repassword" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <div><span id="registerspan"></span></div>
+            <button mat-button color="primary" (click)="checkUserExists()">Register</button>
+        </div>
+          </mat-tab>
+          
+            <mat-tab label="Update Password">
+            <div style="overflow: hidden;">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput value="" [(ngModel)]="uemail" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Old Password</mat-label>
+              <input type="password" matInput [(ngModel)]="oldpassword" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>New Password</mat-label>
+              <input type="password" matInput [(ngModel)]="newpassword" [ngModelOptions]="{standalone: true}">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <div><span id="updatespan"></span></div>
+            <button mat-button color="primary" (click)="updatePassword()">Update Password</button>
+        </div>
+          </mat-tab>
+
+        </mat-tab-group>
+      </mat-card-content>
+  
+    </mat-card>
+  </div>
+
+  
