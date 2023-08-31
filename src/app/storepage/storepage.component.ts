@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import books from '../../../../../amazon.books.json';
+import books from './amazon.books.json';
 import { SharevariableService } from '../sharevariable.service';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
