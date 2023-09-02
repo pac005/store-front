@@ -7,8 +7,8 @@
         </nav>       
     </div>
     <h1 style="margin-top: 5px; margin-bottom: 5px;" *ngIf="username">Cart:</h1>
-    <h3 id="checkEmpty"></h3>
     <h3 id="checkEmpty1" *ngIf="!username" style="margin-top: 10px;">Login to Personalize your Shopping Experience!</h3>
+    <h3 id="checkEmpty" *ngIf="receivedData.length==0" style="margin-top: 10px;">Cart Empty!</h3>
 </header>
 <main class="container" style="max-width: 100% !important;">
     <!-- Home Page -->
