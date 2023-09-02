@@ -1,13 +1,18 @@
     <header>
-        <div class="container">
-            <h1>Magnum Bookstore</h1>
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="width: 100%; display: flex; flex-direction: row; flex-wrap: nowrap; height: 60px;">
+                <h1 style="color: antiquewhite; margin-left: 5px;"><a href="/storepage" style="text-decoration: none; color: white;">Perspective Bookstore</a></h1>
+                <button mat-raised-button style="display: flex; margin-left: auto; margin-right: 10px; background-color: white !important;"><a href="/cart">View Cart</a></button>
+                <div *ngIf="username"><button mat-raised-button style="display: flex; margin-right: 10px; background-color: white !important;" (click)="noUser()"><a href="/storepage">Logout</a></button></div>
+                <div *ngIf="!username"><button mat-raised-button style="display: flex; margin-right: 10px; background-color: white !important;"><a href="">Login</a></button></div>
+            </nav>
         </div>
     </header>
     <main class="container" style="max-width: 100% !important;">
         <!-- Home Page -->
         <section id="home">
-            <h2>Welcome to Your Bookstore {{username}}</h2>
-            <a href="/cart">Link</a>
+            <div *ngIf="username"><h2 style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">Welcome to your favorite Bookstore {{username}}!</h2></div>
+            <div *ngIf="!username"><h2 style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">Login to Personalize your Shopping Experience!</h2></div>
             <!-- Featured books or promotions -->
             <div class="book-list">
                 <!-- Book cards go here -->
@@ -33,8 +38,8 @@
 
     <footer>
         <div class="container" style="position: relative;">
-            <p style="display: inline-block; margin-top: 20px;">&copy; 2023 Magnum Bookstore</p>
-            <div style="position: relative; bottom: 30px; right: -350px;"><pagination-controls style="display: block; float: right;" (pageChange)="p = $event"></pagination-controls></div>
+            <p style="display: inline-block; margin-top: 20px;">&copy; 2023 Perspective Bookstore</p>
+            <div style="position: relative; bottom: 30px; right: -190px;"><pagination-controls style="display: block; float: right;" (pageChange)="p = $event"></pagination-controls></div>
             
         </div>
     </footer>

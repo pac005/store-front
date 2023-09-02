@@ -6,13 +6,13 @@
             <div style="overflow: hidden;">
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input type="email" matInput value="" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+              <input type="email" matInput value="" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" (keydown.enter)="getUserInfo()">
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
   
             <mat-form-field class="example-full-width">
               <mat-label>Password</mat-label>
-              <input type="password" matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+              <input type="password" matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}" (keydown.enter)="getUserInfo()">
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <div><span id="loginspan"></span></div>
@@ -29,24 +29,24 @@
 
               <mat-form-field class="example-full-width">
                 <mat-label>Full Name:</mat-label>
-                <input type="text" matInput value="" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                <input type="text" matInput value="" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" (keydown.enter)="checkUserExists()">
                 <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input type="email" matInput value="" [(ngModel)]="remail" [ngModelOptions]="{standalone: true}">
+              <input type="email" matInput value="" [(ngModel)]="remail" [ngModelOptions]="{standalone: true}" (keydown.enter)="checkUserExists()">
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
   
             <mat-form-field class="example-full-width">
               <mat-label>Password</mat-label>
-              <input type="password" matInput [(ngModel)]="rpassword" [ngModelOptions]="{standalone: true}">
+              <input type="password" matInput [(ngModel)]="rpassword" [ngModelOptions]="{standalone: true}" (keydown.enter)="checkUserExists()">
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>Re-Type Password</mat-label>
-              <input type="password" matInput [(ngModel)]="repassword" [ngModelOptions]="{standalone: true}">
+              <input type="password" matInput [(ngModel)]="repassword" [ngModelOptions]="{standalone: true}" (keydown.enter)="checkUserExists()">
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <div><span id="registerspan"></span></div>
@@ -59,18 +59,18 @@
 
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input type="email" matInput value="" [(ngModel)]="uemail" [ngModelOptions]="{standalone: true}">
+              <input type="email" matInput value="" [(ngModel)]="uemail" [ngModelOptions]="{standalone: true}" (keydown.enter)="updatePassword()">
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
   
             <mat-form-field class="example-full-width">
               <mat-label>Old Password</mat-label>
-              <input type="password" matInput [(ngModel)]="oldpassword" [ngModelOptions]="{standalone: true}">
+              <input type="password" matInput [(ngModel)]="oldpassword" [ngModelOptions]="{standalone: true}" (keydown.enter)="updatePassword()">
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>New Password</mat-label>
-              <input type="password" matInput [(ngModel)]="newpassword" [ngModelOptions]="{standalone: true}">
+              <input type="password" matInput [(ngModel)]="newpassword" [ngModelOptions]="{standalone: true}" (keydown.enter)="updatePassword()">
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <div><span id="updatespan"></span></div>

@@ -1,8 +1,14 @@
 <header>
-    <div class="container">
-        <h1>Magnum Bookstore</h1>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="width: 100%; display: flex; flex-direction: row; flex-wrap: nowrap; height: 60px;">
+            <h1 style="color: antiquewhite; margin-left: 2px;"><a href="/storepage" style="text-decoration: none; color: white;">Perspective Bookstore</a></h1>
+            <div *ngIf="!username" style="display: flex; margin-right: 10px; margin-left: auto;"><button mat-raised-button style="background-color: white !important;"><a href="" style="text-decoration: none; color: black;">Login</a></button></div>
+            <div *ngIf="username" style="display: flex; margin-right: 10px; margin-left: auto;"><button mat-raised-button style="display: flex; margin-right: 10px; background-color: white !important;" (click)="noUser()"><a style="text-decoration: none; color: black;" href="/storepage">Logout</a></button></div>
+        </nav>       
     </div>
-    <h1>Cart:</h1>
+    <h1 style="margin-top: 5px; margin-bottom: 5px;" *ngIf="username">Cart:</h1>
+    <h3 id="checkEmpty"></h3>
+    <h3 id="checkEmpty1" *ngIf="!username" style="margin-top: 10px;">Login to Personalize your Shopping Experience!</h3>
 </header>
 <main class="container" style="max-width: 100% !important;">
     <!-- Home Page -->
@@ -11,17 +17,17 @@
     </section>
 
 <section id="book-listing">
-    <div class="book-grid">
+    <div class="book-grid" style="width: 1200px;">
         <!-- <div class="book-card" style="position: relative; height: 420px;" *ngFor="let item of searchData | slice:prevVal:nextVal; index as i" > -->
-            <div class="book-card" style="position: relative; height: 300px; width: 700px;" *ngFor="let item of receivedData" >
+            <div class="book-card" style="position: relative;" *ngFor="let item of receivedData" >
                 <div>
             <img src={{item.thumbnailUrl}} alt="Book Img">
             <h3>{{item.title}}</h3>
             <p>Author: {{item.authors[0]}}</p>
             </div>
-            <div style="float: right; position: relative;"><p style="position: absolute; bottom: 100px; right: 0; width: 100px;" id="price">Price: $<span style="font-weight: 600;">{{item.price}}</span></p></div>
-        </div>
-<div><h2>Total Price: ${{cost}}</h2></div> 
+            <div style="float: right; position: relative;"><button mat-raised-button style="bottom: 8px; right: 0; width: 170px; margin-right: 10px;" id="remove" (click)="removeCartItem(item)">Remove from Cart</button></div>
+            <div style="float: right; position: relative;"><p style=" bottom: 105px; right: 170px; width: 100px;" id="price">Price: $<span style="font-weight: 600;">{{item.price}}</span></p></div>
+        </div> 
     </div>
 </section>
 
@@ -29,4 +35,8 @@
 </main>
 
 <footer>
+    <div class="container" style="margin-top: 10px;">
+        <div><h2 id="setprice">Total Price: ${{cost}}</h2></div>
+        <p>&copy; 2023 Perspective Bookstore</p>
+    </div>
 </footer>

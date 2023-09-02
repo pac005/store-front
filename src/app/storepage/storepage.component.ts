@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import books from './amazon.books.json';
-import { SharevariableService } from '../sharevariable.service';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-storepage',
@@ -21,9 +23,9 @@ export class StorepageComponent {
   
 
   p: number = 1;
-  count: number = 25;
+  count: number = 28;
 
-  constructor(private storage:SessionStorageService){
+  constructor(private storage:SessionStorageService,private dialog: MatDialog, private router: Router){
     this.username = this.storage.retrieve('username');
     var temp = 'cartList' + this.username
     if(this.storage.retrieve(temp))
@@ -32,11 +34,34 @@ export class StorepageComponent {
 
   updateCartList(item: any)
   {
+
+    for(var i=0;i<this.cartList.length;i++)
+    {    
+      if(this.cartList[i].title == item.title)
+      {
+        this.openModal("Item Already in Cart!")
+        return
+      }
+    }
     this.cartList.push(item)
-    console.log(this.cartList)
     var temp = 'cartList' + this.username
     this.storage.store(temp,this.cartList)
+    this.openModal("Item Added to Cart!")
+    return
+  }
 
+  openModal(msg: string): void {
+    this.storage.store('modalmessage',msg)
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '300px',
+    });
+  }
+
+  noUser()
+  {
+    this.username = this.storage.store('username','');
   }
 
 }
+
+

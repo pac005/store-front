@@ -17,15 +17,17 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { StorepageComponent } from './storepage/storepage.component';
 import { CartComponent } from './cart/cart.component';
-import { SharevariableService } from './sharevariable.service';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { ModalComponent } from './modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     StorepageComponent,
-    CartComponent
+    CartComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +42,10 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
     MatButtonModule,
     HttpClientModule,
     NgxPaginationModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    MatDialogModule
   ],
-  providers: [SharevariableService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

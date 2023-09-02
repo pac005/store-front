@@ -7,7 +7,7 @@ import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   { path: '', component: LoginFormComponent }, // Default route
   { path: 'storepage', component: StorepageComponent },
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
   // Add more routes for your components here
 ];
 

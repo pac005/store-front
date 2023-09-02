@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { NONE_TYPE } from '@angular/compiler';
-import { Router } from '@angular/router';
-import { StorepageComponent} from "../storepage/storepage.component"
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { fromEvent, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -28,12 +26,14 @@ constructor(private http: HttpClient, private storage:SessionStorageService )
     // this.getAllPatients();
   }
 
+  private unsubscriber : Subject<void> = new Subject<void>();
+
 checkUserExists()
 {
   
   if(!this.remail.trim() || !this.name.trim() || !this.rpassword.trim() || !this.repassword.trim())
   {
-    document.getElementById('registerspan')!.innerHTML = "Please Complete all Fields"
+    document.getElementById('registerspan')!.innerHTML = "Please fill out all Fields"
     return;
   }
   let url = "http://localhost:8084/api/v1/storeUser/getUser/" + this.remail
@@ -57,10 +57,16 @@ register()
       return;
     }
 
+    var temp: String = this.name.trim()
+    const firstLetter = temp.charAt(0)
+    const firstLetterCap = firstLetter.toUpperCase()
+    const remainingLetters = temp.slice(1)
+    const capitalizedWord = firstLetterCap + remainingLetters
+
     let bodyData = {
       "emailid" : this.remail.trim(),
       "password" : this.rpassword.trim(),
-      "fullname" : this.name.trim()
+      "fullname" : capitalizedWord
     };
  
     this.http.post("http://localhost:8084/api/v1/storeUser/save",bodyData,{responseType: 'text'}).subscribe((resultData: any)=>
@@ -112,17 +118,22 @@ register()
 
     else
     {
-      document.getElementById('loginspan')!.innerHTML = "Please Complete all Fields"
+      document.getElementById('loginspan')!.innerHTML = "Please fill out all Fields"
     }
 
   }
 
   updatePassword()
   {
+    if(this.newpassword===this.oldpassword)
+    {
+      document.getElementById('updatespan')!.innerHTML = "New Password cannot be the same as Old"
+      return
+    }
     if(this.uemail && this.oldpassword && this.newpassword){
     let url = "http://localhost:8084/api/v1/storeUser/updatePassword/" + this.uemail +"/"+this.oldpassword+"/"+this.newpassword
 
-    this.http.get(url).subscribe((resultData: any)=>{      
+    this.http.get(url).subscribe((resultData: any)=>{     
       if(resultData==true)
       {
         document.getElementById('updatespan')!.innerHTML = "Password Updated"
@@ -138,7 +149,7 @@ register()
     );
   }
   else{
-    document.getElementById('updatespan')!.innerHTML = "Please Complete all Fields"
+    document.getElementById('updatespan')!.innerHTML = "Please fill out all Fields"
   }
 }
 
